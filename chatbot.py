@@ -1,8 +1,9 @@
+#Link to the app:https://clinic-chatbot-nbjp5doighgjadnka7z3ko.streamlit.app/
 import streamlit as st
 
-# ===========================
-#   DATA SECTION
-# ===========================
+
+#   DATA 
+
 
 doctor_schedule = {
     "Dr. Meredith Grey": {
@@ -30,9 +31,9 @@ clinic_hours = "🕒 Clinic Operating Hours: **8 AM – 6 PM (Monday to Friday)*
 emergency_message = "🚨 If this is a medical emergency, call your local emergency number immediately."
 
 
-# ===========================
+
 #   FUNCTION SECTION
-# ===========================
+
 
 def display_doctors():
     """Returns a formatted list of doctors."""
@@ -62,9 +63,9 @@ def get_symptom_advice(symptom):
     return symptom_advice.get(symptom, "❓ Symptom not recognized. Try another.")
 
 
-# ===========================
+
 #   STREAMLIT UI SECTION
-# ===========================
+
 
 st.set_page_config(page_title="Clinic Chatbot", page_icon="🏥", layout="centered")
 
@@ -76,7 +77,7 @@ menu = st.sidebar.radio(
     ["Home", "Check Doctors", "Book Appointment", "Symptom Checker", "Clinic Hours", "Emergency Help"]
 )
 
-# ========== HOME PAGE ==========
+# HOME PAGE 
 if menu == "Home":
     st.header("🏠 Home")
     st.write("This chatbot helps you:")
@@ -88,12 +89,12 @@ if menu == "Home":
     - 🚨 Access emergency help  
     """)
 
-# ========== CHECK DOCTORS PAGE ==========
+# CHECK DOCTORS PAGE
 elif menu == "Check Doctors":
     st.header("👨‍⚕️ Available Doctors")
     st.markdown(display_doctors())
 
-# ========== BOOK APPOINTMENT PAGE ==========
+#  BOOK APPOINTMENT PAGE 
 elif menu == "Book Appointment":
     st.header("📅 Book an Appointment")
 
@@ -104,7 +105,7 @@ elif menu == "Book Appointment":
         result = book_appointment(doctor, day)
         st.success(result)
 
-# ========== SYMPTOM CHECKER PAGE ==========
+# SYMPTOM CHECKER PAGE 
 elif menu == "Symptom Checker":
     st.header("🤒 Symptom Checker")
 
@@ -114,12 +115,12 @@ elif menu == "Symptom Checker":
         advice = get_symptom_advice(symptom)
         st.info(advice)
 
-# ========== CLINIC HOURS ==========
+# CLINIC HOURS 
 elif menu == "Clinic Hours":
     st.header("🕒 Clinic Operating Hours")
     st.info(clinic_hours)
 
-# ========== EMERGENCY SECTION ==========
+#  EMERGENCY SECTION 
 elif menu == "Emergency Help":
     st.header("🚨 Emergency Assistance")
 
@@ -142,4 +143,5 @@ elif menu == "Emergency Help":
     """)
 
     st.info("If transportation is needed, consider using an ambulance service or local emergency number.")
+
 
